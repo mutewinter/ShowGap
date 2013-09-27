@@ -1,0 +1,13 @@
+<div class="has-hover">
+  <a href='{{url}}' class="discussion">
+    <span class="title">{{title}}</span>
+  <div class="right">
+    {{#can "manage" "discussion"}}
+      <div class="destroy-wrapper hidden-hover">
+        <span class="btn btn-mini destroy js-destroy">Delete</span>
+      </div>
+    {{/can}}
+    <span class="subtle">({{replyCount}} replies)</span>
+  </div>
+  </a>
+</div>

@@ -1,0 +1,222 @@
+// Styles for Episodes, because they've got style.
+
+// ----------------------------
+// Episode Form
+// ----------------------------
+
+.create-episode-row {
+  margin-top: 1px;
+  margin-bottom: 20px;
+}
+
+.episode-form {
+  background: #eee;
+
+  @include box-emphasis;
+
+  .kalendae-wrapper {
+    .date-field {
+      width: 83px;
+    }
+
+    .time-field {
+      width: 86px;
+    }
+
+    .add-on {
+      margin-left: -5px;
+      font-size: 17px;
+    }
+  }
+}
+
+// ----------------------------
+// Episode Index
+// ----------------------------
+
+.show-details {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.show-description {
+  width: 400px;
+
+  color: $subtle-color;
+  margin: 0 auto;
+}
+
+.no-episodes {
+  text-align: center;
+  margin-top: 20px;
+
+  .alert {
+    width: 440px;
+    margin: 0 auto;
+    left: 50%;
+
+    h4 {
+      font-size: 18px;
+    }
+
+    p {
+      margin-top: 10px;
+      margin-bottom: 0;
+      font-size: 12px;
+    }
+  }
+}
+
+.episode-list {
+  .episode {
+    @include box-emphasis;
+    margin-bottom: 20px;
+
+    @include transition (box-shadow 0.3s ease-in-out);
+
+    &:hover {
+      @include box-emphasis(black, rgba(0,0,0, 0.45));
+    }
+  }
+
+  .episode-row {
+    // Shadow to make metadata recede from upper content.
+    @include box-shadow(0px 5px 9px -2px rgba(0, 0, 0, 0.45));
+  }
+
+  .episode-data {
+    margin: 5px;
+  }
+
+  .title {
+    min-height: 60px;
+  }
+
+  .record-date {
+    color: darken($subtle-color, 20%);
+    font-size: 15px;
+    padding-bottom: 2px;
+  }
+
+  .metadata-wrapper {
+    background-color: #dadada;
+  }
+
+  .metadata-row {
+    color: $subtle-color;
+
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+
+    li {
+      float: left;
+      list-style: none;
+
+      width: 145px;
+      margin-left: 5px;
+      margin-right: 5px;
+
+      text-align: center;
+    }
+  }
+}
+
+// ----------------------------
+// Episode Show
+// ----------------------------
+
+/*
+  Episode Header
+
+  The header bar for the episode on the show page. Displays the title and
+  recording date as well as naviagtion arrows to the previous and next
+  episodes.
+*/
+.episode-header {
+  position: relative;
+  padding: 10px;
+
+  // Keep the arrows inside the div
+  min-height: 70px;
+  overflow: hidden;
+
+  background-color: darken($slate-blue, 8%);
+
+  color: #ddd;
+  text-align: center;
+
+  .main {
+    max-width: 60%;
+    margin: auto;
+  }
+
+  .title {
+    margin-bottom: 10px;
+    text-shadow: black 0 2px 2px;
+  }
+
+  .record-date { color: #ccc; }
+}
+
+/*
+  Episode Naviagtion
+
+  The arrows on the left and right of the episode header on the episode show
+  page.
+*/
+.episode-navigation {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  margin: 15px 10px 10px;
+
+  opacity: 0.7;
+  @include transition(opacity 0.1s ease-in-out);
+
+  &.previous { left: 0; }
+  &.next { right: 0; }
+
+  &:hover {
+    opacity: 0.9;
+    .arrow {
+      opacity: 0.9;
+    }
+  }
+
+  .arrow {
+    display: block;
+    clear: both;
+    height: 45px;
+    margin-bottom: 5px;
+
+    font-size: 60px;
+    opacity: 0.5;
+  }
+
+  a {
+    color: white;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+/*
+  Episode Columns
+
+  The columns that contain the discussions and their detail view on the episode
+  show page.
+*/
+.column {
+  background-color: #eee;
+  @include box-shadow(0 0 1px 1px rgba(black, 0.2));
+
+  > .content {
+    padding: 5px;
+  }
+
+  &.fixed {
+    top: 10px;
+  }
+}

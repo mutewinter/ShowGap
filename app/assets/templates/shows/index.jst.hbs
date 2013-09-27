@@ -1,0 +1,10 @@
+<h2>{{showsTitle}}</h2>
+<ul class="show-list text-link-list ">
+</ul>
+
+{{#can "manage" "show"}}
+  <form id="new_show" class="well form-inline">
+    <input type="text" name="name" id="new_show_name" placeholder="Show Title">
+    <button type="submit" class='btn btn-primary'>Add</button>
+  </form>
+{{/can}}

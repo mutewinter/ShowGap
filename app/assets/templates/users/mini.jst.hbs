@@ -1,0 +1,12 @@
+<div class="user-mini {{#isSubtle}}subtle{{/isSubtle}}">
+  {{#textBefore}}
+  <span class="text-before">{{this}}</span>
+  {{/textBefore}}
+  <a href="#users/{{user.id}}">
+    <img src="{{user.image}}"/>
+    <span class="name">{{user.name}}</span>
+  </a>
+  {{#textAfter}}
+    <span class="text-after">{{this}}</span>
+  {{/textAfter}}
+</div>

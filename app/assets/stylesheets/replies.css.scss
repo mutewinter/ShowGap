@@ -1,0 +1,344 @@
+// Place all the styles related to the replies controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*
+  Generic list of replies.
+
+  Styleguide 3.1.1
+*/
+.replies {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+/*
+  Reply class for suggested / added replies on a discussion.
+
+  .title-only - Extends the title input field.
+  .title-only - Extends the title input field.
+
+
+  Styleguide 3.1.2
+*/
+
+$reply-background: #eee;
+$bottom-border-height: 1px;
+.discussion-reply {
+  padding: 5px 5px 3px 5px;
+  margin: 8px 0;
+  background: $reply-background;
+  font-size: 1.2em;
+  list-style: none;
+
+  // Sub divs
+  span, a {
+    vertical-align: bottom;
+  }
+
+  // Amount of votes the reply has
+  .vote-amount {
+    position: relative;
+    text-align: center;
+    top: -27px;
+    left: -12px;
+    width: 50px;
+    display: inline-block;
+
+    font-size: 11px;
+    color: #777;
+  }
+
+  // Url and or title
+  .title-and-user {
+    display: inline-block;
+    width: 79%;
+    margin-top: 2px;
+    margin-left: 5px;
+    z-index: 10;
+
+    // TODO
+    // Fix this so we don't have to use nowrap and the ellipsis actually work
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  a.reply-link {
+    color: $link-color;
+    display: block;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    h4 {
+      display: inline-block;
+      &:hover {
+        border-bottom: $bottom-border-height solid $link-color;
+      }
+    }
+  }
+
+  // Title text itself
+  .title {
+    font-size: 16px;
+    margin-bottom: 2px;
+    padding-bottom: $bottom-border-height * 2;
+  }
+
+  // Admin controls
+  .controls {
+    float: right;
+    position: relative;
+    top: 0;
+    right: 0;
+    .btn {
+      opacity: 0.2;
+      @include transition(opacity 0.2s ease);
+    }
+  }
+
+  // Fade in the controls when the user hovers the entire reply div.
+  &:hover .btn {
+    opacity: 1;
+  }
+
+  &.highlight {
+    @include animation(highlight 1.0s ease-in);
+  }
+} // end discussion-reply
+
+.reply-text {
+  display: block;
+  width: 100%;
+  position: relative;
+  p {
+    color: #555;
+    white-space: normal;
+    margin: 0;
+  }
+
+  .expand-fader {
+    @include fader-gradient($reply-background);
+  }
+}
+
+// Small domain text shown next to replies with urls.
+.domain {
+  font-size: 12px;
+}
+
+
+// Highlight Keyframe Animation
+@mixin highlight-kf-mixin {
+  0% { background-color: #FFFFCC }
+  100% { background-color: none }
+}
+
+@-webkit-keyframes highlight { @include highlight-kf-mixin; }
+@-moz-keyframes highlight { @include highlight-kf-mixin; }
+@-ms-keyframes highlight { @include highlight-kf-mixin; }
+@keyframes highlight { @include highlight-kf-mixin; }
+
+// Voting Arrows
+.vote-arrows {
+  $deselected-color: #BBB;
+  $up-color: #FF550D;
+  $down-color: #6699CC;
+
+  display: inline-block;
+  float: left;
+  width: 23px;
+  height: 36px;
+  position: relative;
+
+  a {
+    text-decoration: none;
+  }
+
+  i {
+    font-size: 20px;
+    display: inline-block;
+    color: $deselected-color;
+    position: relative;
+    // Up Arrow
+    &.icon-chevron-up {
+      top: -2px;
+
+      &.voted {
+        color: $up-color;
+      }
+
+      .hidden-hint {
+        top: 15px;
+        color: $up-color;
+        &.icon-remove-circle {
+          color: $deselected-color;
+        }
+      }
+    }
+
+    // Down Arrow
+    &.icon-chevron-down {
+      top: 6px;
+
+      &.voted {
+        color: $down-color;
+      }
+
+      .hidden-hint {
+        top: -13px;
+        color: $down-color;
+        &.icon-remove-circle {
+          color: $deselected-color;
+        }
+      }
+    }
+
+    // Flyout on Left Previewing Action
+    .hidden-hint {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      display: inline;
+      font-size: 0.8em;
+      left: 0;
+      @include transition(
+        left 0.1s ease-in,
+        opacity 0.1s ease-in
+      );
+    }
+
+    // Show the hidden-hint on hover for the entire vote-arrows div
+    &:hover .hidden-hint {
+      left: -20px;
+      opacity: 1;
+      visibility: visible;
+    }
+
+  } // end i
+
+  // Voting Closed
+
+  &.closed i {
+    // Dim the arrows
+    opacity: 0.2;
+    cursor: default;
+
+    &.voted {
+      opacity: 0.5;
+    }
+
+    &:not(.voted) {
+      opacity: 0;
+    }
+
+    // Don't show the hover hint
+    .hidden-hint {
+      opacity: 0;
+      &:hover {
+        display: none;
+      }
+    }
+  }
+
+  &.exclusive {
+    a {
+      cursor: default;
+    }
+
+    i {
+      visibility: hidden;
+
+      &.voted {
+        visibility: visible;
+      }
+    }
+  }
+
+} // end .vote-arrows
+
+
+// ------------------------
+// New Reply Form
+// ------------------------
+
+/*
+  Form for creating a new reply with variable inputs based on discussion type.
+
+  .title-only   - Extends the title input to fill the horizontal width.
+  .url-and-text - Pushes the stacked url and text inputs down to align the "or"
+                  text with the title field.
+
+  Styleguide 3.1.2
+*/
+.new-reply {
+  $solo-input-width: 210px;
+  $short-input-width: 130px;
+  $long-input-width: 300px;
+
+  .reply-field {
+    display: inline-block;
+    vertical-align: top;
+    padding-right: 4px;
+    float: left;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    @include box-sizing(border-box);
+  }
+
+  input {
+    height: 28px;
+  }
+
+  td.title {
+    width: 30%;
+  }
+
+  td.detail {
+    width: 70%;
+  }
+
+  td.controls {
+    width: 48px;
+  }
+
+  .or {
+    padding: 3px 0;
+    font-size: 14px;
+    font-weight: bold;
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
+
+  &.title-only {
+    td.title {
+      width: 85%;
+    }
+  }
+
+  &.url-and-text {
+    $top-offset: 18px;
+    .detail-wrapper {
+      position: relative;
+      top: $top-offset;
+    }
+    table {
+      margin-bottom: $top-offset + 10px;
+    }
+  }
+}
+
+.preview-header {
+  color: #999;
+}

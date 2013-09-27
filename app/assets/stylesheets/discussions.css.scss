@@ -1,0 +1,98 @@
+// Place all the styles related to the discussions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// ------------------------
+// Discussion Index
+// ------------------------
+.discussion-list {
+
+  > li {
+    margin-bottom: 10px;
+    @include transition(background-color 0.1s ease-in-out);
+
+    &:hover {
+      background-color: #F9F9EC;
+    }
+  }
+}
+
+// ------------------------
+// Discussion Show
+// ------------------------
+.discussion-type {
+  $cell-color: #E0E0E0;
+
+  @include border-radius(4px);
+
+  color: lighten($cell-color, 10%);
+  text-align: center;
+  font-size: 12px;
+
+  border: 2px solid darken($cell-color, 20%);
+  background-color: $cell-color;
+
+  padding: 0 2px;
+  width: auto;
+  display: inline-block;
+
+  .type {
+    color: darken($cell-color, 40%);
+    margin-right: 5px;
+  }
+
+  .reply-name {
+    $shadow-color: rgba(0,0,0,0.4);
+    font-weight: bold;
+    text-shadow:
+      $shadow-color 0px 1px 0px,
+      $shadow-color 0px -1px 0px,
+      $shadow-color -1px 0px 0px,
+      $shadow-color 1px 0px 0px;
+    letter-spacing: 0.12em;
+  }
+}
+
+// ------------------------
+// New Discussion Form
+// ------------------------
+
+.templates-label {
+  font-size: 12px;
+}
+
+// ------------------------
+// Edit Discussion Form
+// ------------------------
+
+.discussion-form {
+  background: #eee;
+
+  .control-label {
+    width: 40px;
+  }
+
+  .controls {
+    margin-left: 60px;
+  }
+
+  .discussion-body {
+    min-height: 150px;
+    width: 100%;
+  }
+
+  .wysihtml5-field {
+    .input-xlarge {
+      width: 500px;
+
+      textarea {
+        width: 466px;
+      }
+    }
+
+    // Lower the toolbar font size so it will fit
+    .wysihtml5-toolbar .btn {
+      font-size: 12px;
+    }
+  }
+}

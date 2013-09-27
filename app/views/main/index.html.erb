@@ -1,0 +1,44 @@
+<%=
+  content_tag(
+    "div",
+    "Loading ShowGap...",
+    id: "container",
+    data: {
+      show: @show ? render(
+        partial: 'shows/show',
+        formats: :json,
+        locals: { show: @show }
+      ) : false,
+      episodes: @show ? render(
+        partial: 'episodes/index',
+        formats: :json,
+        locals: { episodes: @show.episodes }
+      ) : false,
+      current_user: render(
+        partial: 'users/show',
+        formats: :json,
+        locals: { user: current_user }
+      ),
+      rules: Ability.rules_map_for_all_roles.to_json,
+      enums: [Episode, Discussion, Reply]
+        .map{ |m| enum_names_and_values_for_model m }.to_json,
+      environment: Rails.env
+    }
+  )
+%>
+<% unless @show %>
+  <% if current_user and current_user.admin? %>
+    <h1><%= Show.count %> <%= Show.count == 1 ? 'Show' : 'Shows' %></h1>
+    <ul class="text-link-list">
+      <% Show.all.each do |show| %>
+        <li>
+          <h2>
+            <%= link_to show.title, root_url(subdomain: show.subdomain) %>
+          </h2>
+        </li>
+      <% end %>
+    <ul>
+  <% else %>
+    <h1>Invalid Show</h1>
+  <% end %>
+<% end %>

@@ -1,0 +1,5 @@
+# Uncomment the lines below and change their values to match your system setup.
+
+# SHOWGAP_DB_PASS: password # only used in production
+# SHOWGAP_TWITTER_KEY: twitterkey
+# SHOWGAP_TWITTER_SECRET: twittersecret

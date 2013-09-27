@@ -1,0 +1,49 @@
+<h3>
+  {{#if isPoll}}
+    Add {{articleForString replyName}} {{replyName}}
+  {{else}}
+    Suggest {{articleForString replyName}} {{replyName}}
+  {{/if}}
+</h3>
+<form class="form-inline new-reply {{formClass}}">
+  <fieldset>
+    <table>
+      <tbody>
+        <tr>
+          <td class="title">
+            <input type="text" name="title" class="title-field"
+              placeholder="{{placeholder.title}}"
+              {{#disabled}}disabled{{/disabled}}>
+          </td>
+          {{#unless titleOnly}}
+            <td class="detail">
+              <div class="detail-wrapper">
+              {{#if urlReplies}}
+                <input type="text" name="text" class="url-field"
+                  placeholder="{{placeholder.url}}"
+                  {{#disabled}}disabled{{/disabled}}>
+              {{/if}}
+              {{#if urlAndTextReplies}}
+                <span class="or">or</span>
+              {{/if}}
+              {{#if textReplies}}
+                <textarea class="text-field" rows="3"
+                  placeholder="{{placeholder.text}}"
+                  {{#disabled}}disabled{{/disabled}}></textarea>
+              {{/if}}
+            </div>
+            </td>
+          {{/unless}}
+          <td class="controls">
+            <button type="submit" class='btn btn-primary pull-left
+              {{#disabled}}disabled{{/disabled}}'>Add</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </fieldset>
+</form>
+<div class="reply-preview hidden">
+  <span class="preview-header">Preview</span>
+  <div class="preview"></div>
+</div>

@@ -1,0 +1,53 @@
+<div class="container content">
+  <div class="show-details">
+    <h2 class="show-title">Episodes for {{showTitle}}</h2>
+    <p class="show-description">{{showDescription}}</p>
+  </div>
+  {{#can "manage" "episode"}}
+    <div class="row create-episode-row">
+      <div class="span6 offset3">
+        <div class="row">
+          <div class="center">
+            <a href="#" class="btn {{createButtonClass}} js-show-create-episode">
+              {{#if hasEpisodes}}
+                Create a New Episode
+              {{else}}
+                Create Your First Episode
+              {{/if}}
+            </a>
+          </div>
+          <span class="episode-form-wrapper"></span>
+        </div>
+      </div>
+    </div>
+  {{else}}
+  {{/can}}
+    {{#unless hasEpisodes}}
+    <div class="row no-episodes">
+      <div class="alert">
+        <h4>Darn, No Episodes Have Been Created.</h4>
+        <p>
+          {{#can "manage" "episode"}}
+          Okay, so see that button up there? Great. When you click that
+          everything is going to change. It's okay, I promise it'll be for the
+          better.
+          {{else}}
+          Why would you make a page for a show and then leave it blank? That
+          seems crazy. Yeah, there's going to be something here soon. I'm sure
+          of it.
+          {{/can}}
+        </p>
+      </div>
+    </div>
+    {{/unless}}
+  <div class="row">
+    <div class="span6 offset3">
+      <ul class="episode-list text-link-list"></ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span6 offset3">
+      <small class="episode-count pull-right">{{episodesSubtitle}}</small>
+    </div>
+  </div>
+</div>

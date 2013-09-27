@@ -1,0 +1,70 @@
+{{#can "manage" "discussion"}}
+{{#unless isPoll}}
+  <div class="controls">
+    {{#button}}
+      <a class='btn btn-mini {{class}}'>{{text}}</a>
+    {{/button}}
+  </div>
+{{/unless}}
+{{/can}}
+{{#can "vote" "reply"}}
+<div class="vote-arrows {{#if isVotingClosed}}closed{{/if}}
+  {{#if exclusiveVotes}}exclusive{{/if}}">
+  <a href="#" class="js-vote-up">
+    <i class="icon-chevron-up {{#if reply.voted_for}}voted{{/if}}">
+    {{#if reply.voted_for}}
+      <i class="icon-remove-circle hidden-hint"></i>
+    {{else}}
+      <i class="icon-plus hidden-hint"></i>
+    {{/if}}
+    </i>
+  </a>
+  <a href="#" class="js-vote-down {{#unless downVotes}}invisible{{/unless}}">
+  <i class="icon-chevron-down {{#if reply.voted_against}}voted{{/if}}">
+  {{#if reply.voted_against}}
+      <i class="icon-remove-circle hidden-hint"></i>
+    {{else}}
+      <i class="icon-minus hidden-hint"></i>
+    {{/if}}
+    </i>
+  </a>
+  <span class="vote-amount">{{reply.plusminus}}</span>
+</div>
+{{/can}}
+<span class="title-and-user">
+  {{#is replyModel "title"}}
+    <h4 class="title">
+      {{reply.title}}
+    </h4>
+  {{/is}}
+  {{#is replyModel "url"}}
+      {{#if reply.title}}
+        <a href="{{reply.text}}" class="reply-link" target="_blank"
+          rel="nofollow" >
+          <h4 class="title">
+            {{reply.title}}
+          </h4>
+        </a>
+        <div class="clearfix"></div>
+        {{#domain}}
+          <span class="domain subtle">{{this}}</span>
+        {{/domain}}
+    {{else}}
+      <a href="{{reply.text}}" class="reply-link" target="_blank"
+        rel="nofollow" >
+        <h4 class="title">
+          {{shortReadableUrl reply.text}}
+        </h4>
+      </a>
+    {{/if}}
+  {{/is}}
+  {{#is replyModel "text"}}
+    <h4 class="title">
+      {{reply.title}}
+    </h4>
+    <div class="reply-text">
+    </div>
+  {{/is}}
+  {{miniUser author textBefore="Suggested by" textAfter=relativeDate}}
+</span>
+<div class="clearfix"></div>

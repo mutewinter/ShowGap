@@ -1,0 +1,59 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*
+  User Mini View
+  A small user view with an avatar, name, and possibly some accopanying text.
+
+  .subtle - Lighter text and 50% opacity avatar image.
+
+  Styleguide 2.1.1
+*/
+.user-mini {
+  font-size: 12px;
+  display: block;
+  $height: 20px;
+  vertical-align: top;
+
+  width: auto;
+  height: $height;
+  padding: 1px;
+
+  a {
+    color: black;
+    &:hover {
+      text-decoration: none;
+      border-bottom: 1px solid black;
+    }
+  }
+
+  img {
+    height: $height - 5;
+    padding-bottom: 2px;
+    margin-right: 2px;
+  }
+
+  span {
+    vertical-align: bottom;
+  }
+
+  .text-before {
+    margin-right: 4px;
+  }
+
+  .text-after {
+    margin-left: 4px;
+  }
+
+  &.subtle {
+    color: $subtle-color;
+    a {
+      color: $subtle-color;
+      border-color: $subtle-color;
+    }
+    img {
+      opacity: 0.5;
+    }
+  }
+}

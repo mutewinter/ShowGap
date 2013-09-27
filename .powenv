@@ -1,0 +1,6 @@
+# Load the system_environment.sh
+if [ -f ~/dot_files/system_environment.sh ]; then
+  source ~/dot_files/system_environment.sh
+fi
+
+# vim: set filetype=sh :

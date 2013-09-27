@@ -1,0 +1,107 @@
+// ------------------------
+// Forms
+// ------------------------
+
+$required-border-color: #a355d8;
+
+/*
+  Required Highlight for Control Group
+
+  Highlights the control group with a purple outline when deselcted, and a
+  purple box shadow when selected. Styled like the built-in boostrap forms.
+  Does not get appliaed when the control group has the error class.
+*/
+.control-group.required:not(.error) {
+  .checkbox,
+  .radio,
+  input,
+  select,
+  textarea {
+    border-color: $required-border-color;
+    &:focus {
+      border-color: darken($required-border-color, 10%);
+      @include box-shadow(0 0 6px lighten($required-border-color, 20%));
+    }
+  }
+
+  .input-prepend .add-on,
+  .input-append .add-on {
+    border-color: $required-border-color;
+  }
+}
+
+/*
+  Form Footer
+
+  Footer that is placed below a form, usually containing help text for the
+  entire form.
+*/
+.form-footer {
+  // The margin-left and width are from input-xlarge.
+  margin-left: 160px;
+  width: 218px;
+
+  display: block;
+  clear: both;
+  overflow: hidden;
+
+  .example {
+    float: right;
+    color: $subtle-color;
+  }
+
+  .required {
+    position: relative;
+    bottom: 3px;
+  }
+
+  .fake-input {
+    background-color: #f6f6f6;
+    display: inline-block;
+    border: 1px solid $required-border-color;
+    border-radius: 3px;
+    width: 24px;
+    height: 13px;
+  }
+}
+
+.form-title {
+  width: 100%;
+  display: block;
+  text-align: center;
+
+  padding-top: 13px;
+  padding-bottom: 12px;
+  margin-bottom: 10px;
+
+  background-color: #F5F5F5;
+  // Same as .form-actions in boostrap.
+  border-bottom: 1px solid #ddd;
+}
+
+// Kalendae
+.k-today:not(.k-selected) {
+  background-color: rgba(255, 255, 0, 0.35) !important;
+}
+
+// ------------------------
+// Style addtions for Bacbkone Forms
+// ------------------------
+
+.bbf-radio {
+  list-style: none;
+  min-height: 18px; // clear the floating input if there is no label text
+
+  display: inline-block;
+  vertical-align: middle;
+
+  padding-left: 18px;
+  padding-top: 5px;
+
+  li {
+    input {
+      float: left;
+      margin-left: -18px;
+    }
+  }
+}

@@ -1,0 +1,269 @@
+// Place all the styles related to the main controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// ------------------------
+// Mixins
+// ------------------------
+@mixin fader-gradient($color: black) {
+  @include linear-gradient(top, rgba($color,0), $color, $fallback: transparent);
+}
+
+// Public: Adds a box shadow effect that looks super nifty.
+//
+// $base-color - The base color for the box highlight.
+@mixin box-emphasis($base-color: black, $highlight-color: white) {
+  @include box-shadow(
+    0 0 1px 1px rgba(black, 0.45),
+    0 0 2px 2px $highlight-color,
+    0 0 3px 3px rgba(black, 0.55)
+  );
+}
+
+// ------------------------
+// Variables
+// ------------------------
+$link-color: #08C;
+$highlight-color: #08C;
+$subtle-color: #888;
+$slate-blue: #242E38; // Used for navigation background
+
+// Hides hidden hovers by default
+.hidden-hover {
+  display: none;
+}
+
+// Shows hidden-hover children when parent element his hovered.
+.has-hover {
+  &:hover {
+    .hidden-hover {
+      display: inline;
+    }
+  }
+}
+
+// Fix the element to the top of the screen in it's current spot.
+.fixed {
+  position: fixed;
+  top: 0;
+}
+
+// ------------------------
+// Nav Bar
+// ------------------------
+
+// Push the content right up next to the navbar
+.navbar {
+  margin: 0;
+  $navbar-text-color: #c8c8c8;
+
+  .brand {
+    color: $navbar-text-color;
+  }
+
+  .nav > li > a {
+    color: $navbar-text-color;
+  }
+
+}
+
+.navbar-inner {
+  background-image: none;
+  background-color: $slate-blue;
+
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+  $bar-color: #40454A;
+  $shine-color: #999;
+
+  @include box-shadow(
+    0px -1px 0px $shine-color,
+    0px -5px 0px $bar-color,
+    0px 1px 0px $shine-color,
+    0px 5px 0px $bar-color
+  );
+}
+
+#logo {
+  float: left;
+  margin-bottom: 4px;
+
+  .title {
+    clear: both;
+    display: block;
+    padding-bottom: 2px;
+  }
+
+  .subtitle {
+    $subtitle-color: #999;
+    font-size: 11px;
+    color: $subtitle-color;
+
+    // Make the subtitle show below and to the right of the title.
+    display: block;
+    clear: both;
+    margin-left: 30px;
+
+    a {
+      color: $subtitle-color;
+      @include transition(color 0.3s ease-in-out);
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  } // end .subtitle
+
+  &:hover {
+    a.showgap { color: #efefef; }
+  }
+}
+
+// Push the login and user information down when the navbar is larger.
+.login-area.large {
+  margin-top: 7px;
+}
+
+// ------------------------
+// Container
+// ------------------------
+
+// The main content for the page that shows below the navigation.
+.content.container {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+// ------------------------
+// Text
+// ------------------------
+
+.center {
+  text-align: center;
+}
+
+.subtle {
+  color: $subtle-color;
+}
+
+/*
+  Text Link List
+  For a list of items that have a .title, that is the main link and an
+  optional .right div containing buttons.
+
+  Styleguide 1.1.1
+*/
+.text-link-list {
+  margin: 0;
+
+  a {
+    display: block;
+  }
+
+  a:hover {
+    text-decoration: none;
+    .title {
+      text-decoration: underline;
+    }
+  }
+
+  > li {
+    list-style: none;
+    margin-bottom: 4px;
+    background-color: #eee;
+  }
+
+  .title {
+    font-size: 2em;
+  }
+
+  .discussions {
+    color: #999;
+    margin-top: 4px;
+  }
+
+  // Move the destroy button to the right of the div
+  .destroy-wrapper {
+    .btn {
+      float: left;
+      cursor: default;
+    }
+  }
+}
+
+/*
+  Expand Link
+  Expand button to show the full text of a parent div.
+
+  Styleguide 1.1.2
+*/
+.expand-button {
+  @include border-radius(4px);
+
+  font-size: 12px;
+
+  position: absolute;
+  bottom: 0;
+
+  i {
+    /*font-size: 10px;*/
+  }
+}
+
+/*
+  Expand Text
+  Text that will be expanded when the expand button is clicked.
+
+  .show - Removes the max-height property so the text is shown.
+
+  Styleguide 1.1.3
+*/
+.expand-text {
+  $line-height: 18px;
+
+  font-size: 13px;
+  line-height: $line-height;
+  max-height: $line-height * 3;
+
+  text-align: left;
+  display: block;
+  overflow: hidden;
+
+
+  &.show {
+    max-height: none;
+    // Room for the expand button
+    padding-bottom: 23px;
+  }
+}
+
+/*
+  Expand Fader
+  Fades the bottom portion of the div it's contained within to denote more text
+  is hidden. Appears at the bottom center of its parent div.
+
+  Note: The parent div must have position: relative.
+
+  .no-fade - Hides the fade gradient for when the div is expanded.
+
+  Styleguide 1.1.3
+*/
+.expand-fader {
+  padding: 15px;
+  width: 100%;
+  // Centers the expand button
+  text-align: center;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+
+  // Include the default gradient
+  @include fader-gradient();
+
+  &.no-fade {
+    background-image: none !important;
+  }
+}
+

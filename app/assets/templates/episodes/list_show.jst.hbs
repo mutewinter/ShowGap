@@ -1,0 +1,23 @@
+<div class="episode-row">
+  <a href="#{{url}}">
+    <section class="episode-data">
+      <h2 class="title">{{episodeTitle}}</h2>
+      <div class="cleafix"></div>
+      {{#if recordDate}}
+      <time datetime="{{isoRecordDate}}"
+        class="record-date">{{recordDate}}</time>
+      {{/if}}
+    </section>
+  </a>
+  {{#can "manage" "episode"}}
+    <a href="#" class="btn js-destroy">Delete</a>
+  {{/can}}
+</div>
+
+<div class="metadata-wrapper">
+  <ul class="row metadata-row">
+    {{#titlesText}}<li class="titles">{{this}}</li>{{/titlesText}}
+    {{#questionText}}<li class="questions">{{this}}</li>{{/questionText}}
+    {{#pollText}}<li class="polls">{{this}}</li>{{/pollText}}
+  </ul>
+</div>

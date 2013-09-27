@@ -1,0 +1,19 @@
+{{#if isPoll}}
+  <ul class="replies poll-options">
+  </ul>
+  {{#can "manage" "discussion"}}
+    <div class="form-wrapper"></div>
+  {{/can}}
+{{else}}
+  {{#if hasAcceptedReplies}}
+    <h3>Accepted {{replyNamePlural}}</h3>
+    <ul class="replies accepted-replies">
+    </ul>
+  {{/if}}
+  {{#if hasSuggestedReplies}}
+    <h3>Suggested {{replyNamePlural}}</h3>
+    <ul class="replies suggested-replies">
+    </ul>
+  {{/if}}
+  <div class="form-wrapper"></div>
+{{/if}}

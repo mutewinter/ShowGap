@@ -1,0 +1,24 @@
+{{#can "manage" "discussion"}}
+  <form class="form-inline new-discussion">
+    <legend>Create a New Discussion</legend>
+
+    <div class="control-group">
+      <label class="control-label templates-label">Choose a Template</label>
+      <div class="templates btn-group" data-toggle="buttons-radio">
+        <button class="btn">Show Titles</button>
+        <button class="btn">Poll</button>
+        <button class="btn">Question</button>
+        <button class="btn active">None</button>
+      </div>
+    </div>
+
+    <div class="clear"></div>
+
+    <input type="text" name="title" class="title-field"
+      placeholder="Discussion Title">
+
+    <button type="submit" class='btn btn-primary'>Create</button>
+  </form>
+{{/can}}
+<ol class="discussion-list text-link-list">
+</ol>

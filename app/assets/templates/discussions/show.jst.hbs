@@ -1,0 +1,19 @@
+<div class="pull-right">
+  {{#author}}
+    {{miniUser this textBefore="Created by"}}
+  {{/author}}
+  {{#can "manage" "discussion"}}
+    <a href="#" class="pull-right js-edit">Edit</a>
+  {{/can}}
+</div>
+<span class="discussion-type">
+  <span class="type">{{titleize discussion.discussion_type}}</span>
+  <span class="reply-name">{{titleize discussion.reply_name}}</span>
+</span>
+<div class="clearfix"></div>
+{{#discussion}}
+  <h2>{{title}}</h2>
+  <p>{{{body}}}</p>
+{{/discussion}}
+<hr/>
+<div class="replies-container"></div>

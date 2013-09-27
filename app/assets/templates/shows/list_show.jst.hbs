@@ -1,0 +1,19 @@
+<div class="has-hover">
+  <a href="#{{url}}">
+    <span class="title">{{name}}</span>
+
+    <div class="right">
+      {{#can "manage" "show"}}
+        <div class="destroy-wrapper hidden-hover">
+          <span class="btn btn-mini destroy js-destroy">Delete</span>
+        </div>
+      {{/can}}
+      <span class="discussions has-popover"
+        data-content="{{discussionsText}}"
+        data-original-title="{{discussionsTitle}}"
+        rel="popover">
+        ({{discussionsTitle}})
+      </span>
+    </div>
+  </a>
+</div>
