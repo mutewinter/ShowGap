@@ -8,7 +8,14 @@ _I started this project a year ago as a replacement for
 idea of supporting it. I am not planning to continue development. The code is
 MIT licensed, have fun._
 
-[![][img1s]][img1] [![][img2s]][img2] [![][img3s]][img3] [![][img4s]][img4] [![][img5s]][img5] [![][img6s]][img6] [![][img7s]][img7] [![][img8s]][img8]
+[![][img8s]][img8]
+[![][img2s]][img2]
+[![][img5s]][img5]
+[![][img1s]][img1]
+[![][img4s]][img4]
+[![][img6s]][img6]
+[![][img7s]][img7]
+[![][img3s]][img3]
 
 ## Woah, what's all this now?
 
