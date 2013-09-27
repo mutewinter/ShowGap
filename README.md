@@ -19,8 +19,9 @@ MIT licensed, have fun._
 
 ## Woah, what's all this now?
 
-ShowGap is a web application. Rails runs the server, which is just a JSON API.
-The client is entirely written with [Backbone](http://backbonejs.org/).
+ShowGap is a web application. [Rails](http://rubyonrails.org/) runs the server,
+which is just a JSON API.  The client is entirely written with
+[Backbone](http://backbonejs.org/).
 
 ## Features
 
