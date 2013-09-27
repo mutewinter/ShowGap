@@ -25,8 +25,9 @@ which is just a JSON API.  The client is entirely written with
 
 ## Features
 
-* Customizable discussions (e.g. disable downvoting, only allow link replies)
+* Customizable discussions (e.g. disable down voting, only allow link replies)
 * Subdomains for each show
+* Rich HTML5 Editor
 * Multiple episodes per show with air date and time
 * Multiple user roles (admin, host, and listener)
 * Twitter authentication
@@ -41,7 +42,7 @@ which is just a JSON API.  The client is entirely written with
 * [Backbone](http://backbonejs.org/)
 * [Rails](http://rubyonrails.org/)
 * [CanCan](https://github.com/ryanb/cancan)
-* [Twitter Boostrap](http://twitter.github.com/bootstrap/)
+* [Twitter Bootstrap](http://twitter.github.com/bootstrap/)
 * [Underscore](http://underscorejs.org/)
 * [Handlebars](http://handlebarsjs.com/)
 * [Sugar.js](http://sugarjs.com/)
