@@ -83,10 +83,6 @@ Simply run `mina deploy`.
 
 Simply run `teleport user@server`.
 
-_Note: `ssh_host_alias` is the alias for the host you want to setup from your
-`~./ssh/config file.`
-
-
 ## License
 
 MIT
