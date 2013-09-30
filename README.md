@@ -55,15 +55,18 @@ which is just a JSON API.  The client is entirely written with
 
 ## How do I Set it Up?
 
-_You must have Ruby 2.0 installed. I suggest using [RVM](https://rvm.io/)._
+Install Ruby 2.0 using [RVM](https://rvm.io/) and [Pow.cx][]
 
 1. `bundle`
 1. `rake db:create db:migrate db:seed`
 1. [Make an App](https://dev.twitter.com/apps) on Twitter
 1. `mv config/application.yml.example config/application.yml`
 1. Edit `config/application.yml` and add your Twitter consumer keys
-1. `rails s`
-1. Open [`localhost:3000`](http://localhost:3000).
+1. `cd ~/.pow`
+1. `ln -s /path/to/showgap`
+1. Open `http://showgap.dev`
+
+_Note: [Pow.cx][] is used to support the multiple subdomains used by ShowGap._
 
 **Becoming an Admin**
 
@@ -105,3 +108,4 @@ MIT
 [img7s]: http://i.imgur.com/lBA3S3Xs.jpg
 [img8]: http://i.imgur.com/Nqu2InM.jpg
 [img8s]: http://i.imgur.com/Nqu2InMs.jpg
+[Pow.cx]: http://pow.cx/
